@@ -14,23 +14,30 @@ const GetRandom = () => {
         dispatch(getRandom())
     }, [dispatch])
     const [sort, setSort] = useState(true);
-
-    const sortByname = useSelector(state =>
-        [...state.random.random.results].sort((a, b) => a.name.first.localeCompare(b.name.first))
-    );
-
-
-    const sortBynameRevers = useSelector(state =>
-        [...state.random.random.results].sort((a, b) => b.name.first.localeCompare(a.name.first))
-    );
-
+    const [filter, setFilter] = useState("all");
+    const sortByname = [...randoms].sort((a, b) => a.name.first.localeCompare(b.name.first));
+    const sortBynameRevers = [...randoms].sort((a, b) => b.name.first.localeCompare(a.name.first));
     const sortRandoms = sort ? sortByname : sortBynameRevers;
+    const filterRandoms = filter === "male"
+        ? sortRandoms.filter(random => random.gender === "male")
+        : filter === "female"
+            ? sortRandoms.filter(random => random.gender === "female")
+            : sortRandoms;
     const refresh = () => {
         dispatch(getRandom());
     };
     return (
         <div className={'randoms'}>
             <div className={'buttonDiv'}>
+                <button className={'button'} onClick={() => setFilter("all")}>
+                    Show All
+                </button>
+                <button className={'button'} onClick={() => setFilter("male")}>
+                    Filter Male
+                </button>
+                <button className={'button'} onClick={() => setFilter("female")}>
+                    Filter Female
+                </button>
                 <button className={'button'} onClick={() => setSort(true)}>
                     Sort by Name (A to Z)
                 </button>
@@ -42,7 +49,7 @@ const GetRandom = () => {
                 </button>
             </div>
             <div className={'randomInfo'}>
-                {sortRandoms.map((random, i) =>(
+                {filterRandoms.map((random, i) =>(
                     <OneRandom
                         key={i}
                         image={random.picture.large}
