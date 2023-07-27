@@ -1,0 +1,50 @@
+.randoms{
+    width: 900px;
+    margin: 0 auto;
+
+}
+.buttonDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.button.refresh {
+    background-color: #28a745;
+}
+
+.button.active {
+    background-color: #dc3545;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button.active:hover {
+    background-color: #c82333;
+}
+.inputDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.inputFindName {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 250px;
+    margin-bottom: 10px;
+}
