@@ -15,7 +15,7 @@ const GetRandom = () => {
         dispatch(getRandom())
     }, [dispatch])
     return (
-        <div>
+        <div className={'randoms'}>
             {randoms.map((random, i) =>(
                 <OneRandom
                 key={i}

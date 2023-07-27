@@ -3,7 +3,7 @@ import React from "react";
 
 const OneRandom = (props) => {
     return(
-        <div>
+        <div className={'oneRandom'}>
             <img className={'image'} src={props.image} alt={props.image} placeholder={props.image}/>
             <h2 className={'text'}>{props.text}</h2>
             <p className={'gender'}>{props.gender}</p>

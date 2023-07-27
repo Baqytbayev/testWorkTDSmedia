@@ -3,7 +3,7 @@ import GetRandom from "./components/getRandom/getRandom";
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <GetRandom/>
     </div>
   );
