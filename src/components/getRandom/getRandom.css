@@ -34,3 +34,17 @@
 .button.active:hover {
     background-color: #c82333;
 }
+.inputDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.inputFindName {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 250px;
+    margin-bottom: 10px;
+}

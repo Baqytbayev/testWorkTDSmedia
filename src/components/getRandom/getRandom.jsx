@@ -15,6 +15,7 @@ const GetRandom = () => {
     }, [dispatch])
     const [sort, setSort] = useState(true);
     const [filter, setFilter] = useState("all");
+    const [findName, setFindName] = useState("")
     const sortByname = [...randoms].sort((a, b) => a.name.first.localeCompare(b.name.first));
     const sortBynameRevers = [...randoms].sort((a, b) => b.name.first.localeCompare(a.name.first));
     const sortRandoms = sort ? sortByname : sortBynameRevers;
@@ -23,11 +24,25 @@ const GetRandom = () => {
         : filter === "female"
             ? sortRandoms.filter(random => random.gender === "female")
             : sortRandoms;
+
+    const findNameInput = filterRandoms.filter(random =>
+        random.name.first.toLowerCase().includes(findName.toLowerCase())
+    );
+
     const refresh = () => {
         dispatch(getRandom());
     };
     return (
         <div className={'randoms'}>
+            <div className={'inputDiv'}>
+                <input
+                    className={'inputFindName'}
+                    type="text"
+                    value={findName}
+                    onChange={e => setFindName(e.target.value)}
+                    placeholder={'Find By Name'}
+                />
+            </div>
             <div className={'buttonDiv'}>
                 <button className={'button'} onClick={() => setFilter("all")}>
                     Show All
@@ -49,7 +64,7 @@ const GetRandom = () => {
                 </button>
             </div>
             <div className={'randomInfo'}>
-                {filterRandoms.map((random, i) =>(
+                {findNameInput.map((random, i) =>(
                     <OneRandom
                         key={i}
                         image={random.picture.large}
